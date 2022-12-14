@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="./netflix.css">
+    <link rel="stylesheet" href="../icofont/icofont.min.css">
+</head>
+<body>
+    <div class="part-1">
+        <div class="picture-overlay">
+            <nav class="navbar">
+                <img src="./logo.png" alt="Netlflix Logo" class="d-logo" id="d-logo">
+                <a href="#sign-in" title="Sign Up" class="background signupLink d-logo text-color">Sign In</a>
+            </nav>
+            <div class="picture-overlay"></div>
+            <section class="main">
+                <div class="main-sub">
+                    <p class="typography1 text-color">Unlimited movies, Tv shows and more.</p>
+                </div>
+                <p class="typography2 text-color">Watch Anywhere, Cancel Anytime.</p>
+                <p class="typography3 text-color">Ready to watch? Enter your email to create or restart your membership.</p>
+                <div class="asci4i">
+                    <input type="email" class="input-text" placeholder="Email address" title="Your Email" name="space">
+                    <button type="button" class="input-button text-color background" title="Start">Get Started
+                        <i class="icofont-simple-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="part-2">
+        <div class="flex-item">
+            <div class="texts">
+                <p class="typography1">Enjoy on Your TV.</p>
+                <p class="typography2">Watch on Smart Tvs, Playstation, Xbox, Chromecast, Apple Tv, Blu-ray players, and more.</p>
+            </div>
+            <div class="image-mockup">
+                <img src="./tv.png" alt="Mock Up" class="d-image1">
+                <video src="./Netflix Nigeria - Watch TV Shows Online, Watch Movies Online.m4v" autoplay loop muted class="video1"></video>
+            </div>
+        </div>
+        <div class="flex-item3">
+            <div class="image-mockup">
+                <img src="./mobile-0819.jpg" alt="Kids" class="d-image2">
+                <div class="over-picture">
+                    <img src="./boxshot.png" alt="Stranger Things" class="stranger-things">
+                    <div>
+                        <p class="typography3 text-color">Stranger Things</p>
+                        <p class="typography3 text-color1">Downloading...</p>
+                    </div>
+                    <img src="./download-icon.gif" alt="download" class="loop">
+                </div>
+            </div>
+            <div class="texts">
+                <p class="typography1">Download your shows to watch offline</p>
+                <p class="typography2">Save your favorites easily and always have something to watch</p>
+            </div>
+        </div>
+        <div class="flex-item1">
+            <div class="texts">
+                <p class="typography1">Watch everywhere</p>
+                <p class="typography2">Stream unlimited movies and TV Shows on your phone, tablet, laptop, and TV</p>
+            </div>
+            <!-- <i class="icofont-simple-right icofont-2x"></i> -->
+        </div>
+        <div class="flex-item">
+            <div class="image-mockup">
+                <img src="./AAAABfpnX3dbgjZ-Je8Ax3xn0kXehZm_5L6-xe6YSTq_ucht9TI5jwDMqusWZKNYT8DfGudD0_wWVVTFLiN2_kaQJumz2iivUWbIbAtF.png" alt="Kids" class="d-image2">
+            </div>
+            <div class="texts">
+                <p class="typography1">Create profiles for kids.</p>
+                <p class="typography2">Send kids on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+            </div>
+        </div>
+        <div class="flex-item2">
+            <p class="typography1 text-color">Frequently Asked Questions</p>
+            <div class="accordion-items">
+                <button type="button" class="inner-accordion" onclick="dropdown()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">What is Netflix?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown">
+                    <p class="typography4 text-color">Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.</p>
+                    <p class="typography4 text-color">You can watch as much as you want, whenever you want without a single commercial - all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!</p>
+                </div>
+                <button type="button" class="inner-accordion" onclick="dropdown1()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">How much does Netflix cost?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown1"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown1">
+                    <p class="typography4 text-color">Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦1,200 to ₦4,400 a month. No extra costs, no contracts.</p>
+                </div>
+                <button type="button" class="inner-accordion" onclick="dropdown2()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">Where can I watch?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown2"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown2">
+                    <p class="typography4 text-color">Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.</p>
+                    <p class="typography4 text-color">You can also download your favorite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.</p>
+                </div>
+                <button type="button" class="inner-accordion" onclick="dropdown3()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">How do I cancel?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown3"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown3">
+                    <p class="typography4 text-color">Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees - start or stop your account anytime.</p>
+                </div>
+                <button type="button" class="inner-accordion" onclick="dropdown4()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">What can I watch on Netflix?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown4"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown4">
+                    <p class="typography4 text-color">Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.</p>
+                </div>
+                <button type="button" class="inner-accordion" onclick="dropdown5()">
+                    <div class="inner-button">
+                        <p class="typography4 text-color">Is Netflix good for kids?</p>
+                        <div><i class="icofont-plus" id="icon-dropdown5"></i></div>
+                    </div>
+                </button>
+                <div class="accordion-dropdown5">
+                    <p class="typography4 text-color">The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.</p>
+                    <p class="typography4 text-color">Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don't want kids to see.</p>
+                </div>
+            </div>
+            
+            <p class="typography3 text-color">Ready to watch? Enter your email to create or restart your membership.</p>
+            <div class="asci4i">
+                <input type="email" class="input-text" placeholder="Email address" title="Your Email" name="space">
+                <button type="button" class="input-button text-color background" title="Start">
+                    Get Started
+                    <i class="icofont-simple-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="footer">
+            <div>asc</div>
+            <div>
+                <div>ilm</div>
+                <div>asasf</div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script src="./netflix.js"></script>
+</body>
+</html>
