@@ -61,7 +61,7 @@ body {
 .text-color3 {
     color: rgb(46, 196, 182);
 }
-.inputs_get input[type=email], .inputs_get input[type=password] {
+.inputs_get input[type=text], .inputs_get input[type=password] {
     box-sizing: border-box;
     min-width: 228px;
     margin: auto;

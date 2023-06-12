@@ -8,5 +8,7 @@ app_name = 'stuternlogin'
 #Add urlpatterns variable, which would contain the other pages, being led from the functions in the views file.
 urlpatterns = [
     path('', views.index, name="index"),
-    path('create', views.createaccount, name="create")
+    path("create", views.createaccount, name="create"),
+    path("login", views.login_user, name="login"),
+    path('logout', views.logout_user, name="logout")
 ]
