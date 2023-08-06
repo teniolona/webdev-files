@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        button:hover {
+            outline: 1px solid;
+        }
+    </style>
+</head>
+<body style="background: url(./nice-setup.jpg); background-size:cover">
+    <div class="container-md card my-2 mx-auto w-75 shadow-sm">
+        <p class="header display-5 text-center">Shopping List</p>
+        <div class="d-grid gap-3 p-3 w-75 align-self-center">
+            <input type="text" id="input1" class="form-control border-dark-subtle fs-6" placeholder="Product">
+            <input type="number" id="input2" class="form-control border-dark-subtle fs-6" placeholder="Price">
+            <input type="number" id="input3" class="form-control border-dark-subtle fs-6" placeholder="Quantity">
+        </div>
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <button class="btn btn-info" id="submit" onclick="submit()">Submit</button>
+            <p class="text-center fs-5 m-0">Total: <span id="totalprice">0</span></p>
+        </div>
+    </div>
+    <div class="boughtItems"></div>
+</body>
+<script>
+    let product = document.getElementById("input1")
+    let price = document.getElementById("input2")
+    let quantity = document.getElementById("input3")
+    let totalprice = document.getElementById("totalprice")
+    let boughtItems = document.querySelector(".boughtItems")
+    //let wholeobject = []
+    let sum1
+    let localval2 = []
+    localval2 = localStorage.getItem("testing")
+    localval2 = JSON.parse(localval2)
+    // console.log(localval2)
+    
+    /*let localitem2 = [
+    {name:"Teniola", bestFood:"Jellof", outfit:"cap", isProgrammer:true},
+    {name:"Hermoine", bestFood:"Amala", outfit:"T-Shirt", isProgrammer:false}
+    ]
+
+
+    localitem2 = JSON.stringify(localitem2)
+    localStorage.setItem("macOsX", localitem2)
+    localitem2 = localStorage.getItem("macOsX")
+    localitem2 = JSON.parse(localitem2)
+    console.log(localitem2)*/
+
+    let localitem = []
+    if (localval2 !== null) {
+        localval2 = localitem
+        localitem = JSON.stringify(localitem)
+        //localStorage.setItem("testing", localitem)
+    }
+    else {
+        localitem = JSON.stringify(localitem)
+        localStorage.setItem("testing", localitem)
+    }
+    
+    //let localitem = [{input1:"Orange", input2:2500, input3:12}]
+    //localitem = localval2
+    
+    localitem = localStorage.getItem("testing")
+    localitem = JSON.parse(localitem)
+
+    // localStorage.clear()
+    for(i = 0; i < localitem.length; i++) {
+        boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+            <div class="row justify-content-center align-items-center py-3 px-2 gap-2">
+                <div class="col text-center">Item:<span> ${localitem[i].input1}</span></div>
+                <div class="col text-center">Price:<span> ${localitem[i].input2}</span></div>
+                <div class="col text-center">Quantity:<span> ${localitem[i].input3}</span></div>
+                <div class="col text-center">Sub-Total:<span> ${localitem[i].input2 * localitem[i].input3}</span></div>
+                <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+            </div>
+        </div>`
+        sum1 = localitem.reduce((total, item) => {
+            return (item.input2 * item.input3) + total
+        }, 0)
+        Number(totalprice.innerHTML)
+        totalprice.innerHTML = sum1
+    }
+    // console.log(localitem)
+    function submit() {
+        totalprice.innerHTML = ""
+        localitem.push({input1:product.value, input2:price.value, input3:quantity.value})
+        boughtItems.innerHTML = ""
+        localitem = JSON.stringify(localitem)
+        localStorage.setItem("testing", localitem)
+        localitem = localStorage.getItem("testing")
+        localitem = JSON.parse(localitem)
+        //console.log(typeof(localitem))
+        for(let i = 0; i < localitem.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-2">
+                    <div class="col text-center">Item:<span> ${localitem[i].input1}</span></div>
+                    <div class="col text-center">Price:<span> ${localitem[i].input2}</span></div>
+                    <div class="col text-center">Quantity:<span> ${localitem[i].input3}</span></div>
+                    <div class="col text-center">Sub-Total:<span> ${localitem[i].input2 * localitem[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = localitem.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            //console.log(sum1)
+            //wholeobject[i] = JSON.stringify(wholeobject[i])
+            //localStorage.setItem("testing", wholeobject[i])
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+    function dellist(i) {
+        localitem.splice(i, 1)
+        totalprice.innerHTML = ""
+        boughtItems.innerHTML = ""
+        localitem = JSON.stringify(localitem)
+        localStorage.setItem("testing", localitem)
+        localitem = localStorage.getItem("testing")
+        localitem = JSON.parse(localitem)
+        for(let i = 0; i < localitem.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-2">
+                    <div class="col text-center">Item:<span> ${localitem[i].input1}</span></div>
+                    <div class="col text-center">Price:<span> ${localitem[i].input2}</span></div>
+                    <div class="col text-center">Quantity:<span> ${localitem[i].input3}</span></div>
+                    <div class="col text-center">Sub-Total:<span> ${localitem[i].input2 * localitem[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = localitem.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+    function editlist(i) {
+        
+        totalprice.innerHTML = ""
+        boughtItems.innerHTML = ""
+        let new1 = prompt("Enter New Product:", localitem[i].input1)
+        let new2 = prompt("Enter New Price:", localitem[i].input2)
+        let new3 = prompt("Enter New Quantity:", localitem[i].input3)
+        localitem[i].input1 = new1
+        localitem[i].input2 = new2
+        localitem[i].input3 = new3
+
+        localitem = JSON.stringify(localitem)
+        localStorage.setItem("testing", localitem)
+        localitem = localStorage.getItem("testing")
+        localitem = JSON.parse(localitem)
+        for(let i = 0; i < localitem.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-2">
+                    <div class="col text-center">Item:<span> ${localitem[i].input1}</span></div>
+                    <div class="col text-center">Price:<span> ${localitem[i].input2}</span></div>
+                    <div class="col text-center">Quantity:<span> ${localitem[i].input3}</span></div>
+                    <div class="col text-center">Sub-Total:<span> ${localitem[i].input2 * localitem[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = localitem.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+</script>
+</html>
