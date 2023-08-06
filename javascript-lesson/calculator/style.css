@@ -1,0 +1,64 @@
+.body {
+    font-family: 'Montserrat';
+    margin: 0 auto;
+    width: 400px;
+    min-height: 300px;
+    border: 1px solid #343333;
+    border-radius: 10px;
+    background-color: #595757;
+}
+.inputs {
+    /* padding: 0 auto;
+    display: inline-block; */
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    position: relative;
+    /* padding-top: 2rem; */
+}
+.inputs input {
+    width: 180px;
+    text-align: center;
+    border: none;
+    outline: none;
+    font: normal 400 20px 'Montserrat';
+}
+.body p {
+    color: white;
+    margin: 0.5em 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+.body .button {
+    padding: 6px;
+    width: 100%;
+}
+.body .print-button {
+    margin: 0 auto;
+    width: 100px;
+    display: block;
+    padding: 5px 0px;
+}
+.operators {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+    row-gap: 25px;
+    padding: 1.6rem 3rem;
+    flex-wrap: wrap;
+}
+.operators button {
+    background-color: white;
+    border-radius: 14px;
+    padding: 10px 15px;
+    text-align: center;
+}
+#answer {
+    margin: 0 auto;
+    width: 70%;
+    font-size: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+}

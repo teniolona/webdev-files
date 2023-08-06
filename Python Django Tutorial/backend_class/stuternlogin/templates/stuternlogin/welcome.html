@@ -1,7 +1,0 @@
-{% extends "stuternlogin/layout_s.html" %}
-{% load static %}
-{% block body %}
-    <h1 style="font-size: 150px;">Welcome {{username}}</h1>
-
-    <a href="{% url 'stuternlogin:logout' %}">Want To Log Out?</a>
-{% endblock %}

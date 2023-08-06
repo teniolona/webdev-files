@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        button:hover {
+            outline: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-md card my-2 mx-auto w-75 shadow-sm">
+        <p class="header display-5 text-center">Shopping List</p>
+        <div class="d-grid gap-3 p-3 w-75 align-self-center">
+            <input type="text" id="input1" class="form-control border-dark-subtle fs-6" placeholder="Product">
+            <input type="number" id="input2" class="form-control border-dark-subtle fs-6" placeholder="Price">
+            <input type="number" id="input3" class="form-control border-dark-subtle fs-6" placeholder="Quantity">
+        </div>
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <button class="btn btn-info" id="submit" onclick="submit()">Submit</button>
+            <p class="text-center fs-5 m-0">Total: <span id="totalprice">0</span></p>
+        </div>
+    </div>
+    <div class="boughtItems"></div>
+</body>
+<script>
+    let product = document.getElementById("input1")
+    let price = document.getElementById("input2")
+    let quantity = document.getElementById("input3")
+    let totalprice = document.getElementById("totalprice")
+    let boughtItems = document.querySelector(".boughtItems")
+    let wholeobject = []
+    let sum1
+    /*let wholeobject = [
+    {name1:"Ade", age:23},
+    {name1:"Edu", age:24}]
+    wholeobject.push({name1:"Redmade", age:25})
+    console.log(wholeobject)
+    wholeobject.forEach((item, placein) => {
+        console.log(item.age * 2)
+    })
+    let sum1 = wholeobject.reduce((total, item) => {
+        return item.age + total
+    }, 0)
+    console.log(sum1)*/
+    function submit() {
+        totalprice.innerHTML = ""
+        wholeobject.push({input1:product.value, input2:price.value, input3:quantity.value})
+        boughtItems.innerHTML = ""
+        for(let i = 0; i < wholeobject.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-3">
+                    <div class="col">Item:<span> ${wholeobject[i].input1}</span></div>
+                    <div class="col">Price:<span> ${wholeobject[i].input2}</span></div>
+                    <div class="col">Quantity:<span> ${wholeobject[i].input3}</span></div>
+                    <div class="col">Sub-Total:<span> ${wholeobject[i].input2 * wholeobject[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = wholeobject.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            //console.log(sum1)
+            
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+    function dellist(i) {
+        wholeobject.splice(i, 1)
+        totalprice.innerHTML = ""
+        boughtItems.innerHTML = ""
+
+        for(let i = 0; i < wholeobject.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-3">
+                    <div class="col">Item:<span> ${wholeobject[i].input1}</span></div>
+                    <div class="col">Price:<span> ${wholeobject[i].input2}</span></div>
+                    <div class="col">Quantity:<span> ${wholeobject[i].input3}</span></div>
+                    <div class="col">Sub-Total:<span> ${wholeobject[i].input2 * wholeobject[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = wholeobject.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+    function editlist(i) {
+        totalprice.innerHTML = ""
+        boughtItems.innerHTML = ""
+        let new1 = prompt("Enter New Product:", wholeobject[i].input1)
+        let new2 = prompt("Enter New Price:", wholeobject[i].input2)
+        let new3 = prompt("Enter New Quantity:", wholeobject[i].input3)
+        wholeobject[i].input1 = new1
+        wholeobject[i].input2 = new2
+        wholeobject[i].input3 = new3
+
+        for(let i = 0; i < wholeobject.length; i++) {
+            boughtItems.innerHTML += `<div class="container card text my-4 mx-auto shadow-sm">
+                <div class="row justify-content-center align-items-center py-3 px-2 gap-3">
+                    <div class="col">Item:<span> ${wholeobject[i].input1}</span></div>
+                    <div class="col">Price:<span> ${wholeobject[i].input2}</span></div>
+                    <div class="col">Quantity:<span> ${wholeobject[i].input3}</span></div>
+                    <div class="col">Sub-Total:<span> ${wholeobject[i].input2 * wholeobject[i].input3}</span></div>
+                    <button class="btn btn-info col-sm" onclick="dellist(${i})">Delete</button>
+                    <button class="btn btn-info col-sm" onclick="editlist(${i})">Edit</button>
+                </div>
+            </div>`
+            sum1 = wholeobject.reduce((total, item) => {
+                return (item.input2 * item.input3) + total
+            }, 0)
+            Number(totalprice.innerHTML)
+            totalprice.innerHTML = sum1
+        }
+    }
+</script>
+</html>

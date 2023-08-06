@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="body">
+        <form action="#" name="form1">
+            <p>Enter the values</p>
+            <div class="inputs">
+                <input type="text" name="number1" id="num1" placeholder="Number 1">
+                <input type="text" name="number2" id="num2" placeholder="Number 2">
+            </div>
+            <div class="operators">
+                <button type="button" class="addition" onclick="add()" value="add num">+</button>
+                <button type="button" class="subtraction" onclick="subtract()" value="sub num">-</button>
+                <button type="button" class="multiplication" onclick="multiply()" value="mul num">*</button>
+                <button type="button" class="division" onclick="divide()" value="div num">/</button>
+                <button type="button" class="increment" onclick="increment()" value="increment">++  </button>
+                <button type="button" class="exponential" onclick="square()" value="square num">^</button>
+            </div>
+            <!-- <div class="print-button">
+                <button type="button" onclick="printvalue()" value="print name" class="button">print name</button>
+            </div> -->
+            <div id="answer">0</div>
+        </form>
+    </main>
+
+    <!-- <form name="form1">
+        <input type="text" id="num1" name="">
+        <input type="text" id="num2" name="input_num2">
+        <button onclick="addition()">Addition</button>
+    </form> -->
+</body>
+<script>
+    
+    var num1 = document.form1.number1.value
+    var num2 = document.form1.number2.value
+    num1 = Number(num1)
+    num2 = Number(num2)
+
+    function add() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = num1 + num2
+        document.getElementById('answer').innerHTML = num3
+    }
+    function subtract() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = num1 - num2
+        document.getElementById('answer').innerHTML = num3
+    }
+    function multiply() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = num1 * num2
+        document.getElementById('answer').innerHTML = num3
+    }
+    function divide() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = num1 / num2
+        document.getElementById('answer').innerHTML = num3
+    }
+    function square() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = num1 ** num2
+        document.getElementById('answer').innerHTML = num3
+    }
+    function increment() {
+        var num1 = document.form1.number1.value
+        var num2 = document.form1.number2.value
+        num1 = Number(num1)
+        num2 = Number(num2)
+        var num3 = ++num1
+        document.getElementById('answer').innerHTML = num3
+    }
+</script>
+</html>
