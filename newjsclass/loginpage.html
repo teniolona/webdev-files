@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../calculator/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(../afrimerican-man.jpg);
+        }
+        * {
+            font-family: "Montserrat";
+        }
+        #welcome {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-50 my-auto card bg-light mx-auto">
+        <p class="fs-2 text-center py-3">Login Page</p>
+        <form action="" class="col mx-auto w-75">
+            <label for="username" class="col-form-label">Username</label>
+            <input type="text" class="form-control placeholder-wave w-100" placeholder="Username" id="username" required><br>
+            <label for="username" class="col-form-label">Password</label>
+            <input type="password" class="form-control placeholder-wave w-100" placeholder="Password" id="password" required><br>
+        </form><br>
+        <button class="btn btn-outline-success mx-auto w-100" onclick="submit()">Submit</button>
+        <p class="text-center fs-5 my-3">Don't Have An Account? <a href="./signupage.html" class="link-success">Create One</a></p>
+    </div>
+    <div id="loggedin"></div>
+</body>
+<script>
+    // let user = {username:"teniola", password:"teniola"}
+    let username = document.getElementById("username")
+    let password = document.getElementById("password")
+    //let email = document.getElementById("email")
+    let loggedin = document.getElementById("loggedin")
+
+    // Get what is inside the localStorage
+    let backup = []
+    backup = localStorage.getItem("info")
+    backup = JSON.parse(backup)
+
+    let myusers = []
+    let app_user = {}
+
+    // If nothing is inside the localStorage, give an empty array. If there is, let my current array be equal to it
+    if(backup !== null) {
+        myusers = backup
+        myusers = JSON.stringify(myusers)
+    } else {
+        myusers = JSON.stringify(myusers)
+        localStorage.setItem("info", myusers)
+    }
+
+    myusers = localStorage.getItem("info")
+    myusers = JSON.parse(myusers)
+
+    function submit() {
+        // Data from input element being stored as an object
+        app_user = {username:username.value, password:password.value}
+
+        for (let i  = 0; i < myusers.length; i++) {
+            // Check if there is a user such username and password from the input
+            if (app_user.username == myusers[i].username &&  app_user.password == myusers[i].password) {
+                // document.getElementById("welcome").style.display = "block"
+                loggedin.innerHTML = `<div class="container w-50 card text-center fs-4 my-2" id="welcome">Welcome ${myusers[i].username}</div>`
+            }
+            else {
+                alert("Incorrect Details")
+            }
+        }
+        myusers = JSON.stringify(myusers)
+        localStorage.setItem("info", myusers)
+        myusers = localStorage.getItem("info")
+        myusers = JSON.parse(myusers)
+        console.log(myusers)
+
+    }
+</script>
+</html>

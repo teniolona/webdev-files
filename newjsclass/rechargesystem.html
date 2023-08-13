@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge System</title>
+    <link rel="stylesheet" href="../calculator/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <style>
+        .option1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container card">
+        <h1 class="text-center py-2">Recharge Card System(MTN)</h1>
+        <div class="option1 gap-4 py-3 flex-wrap">
+            <div class="option1">
+                <label for="" class="form-label m-0">Select SIM:</label>
+                <select name="" id="simcard1" title="sim" class="form-select">
+                    <option value="glo">GLO</option>
+                    <option value="airtel">AIRTEL</option>
+                    <option value="9mobile">9MOBILE</option>
+                    <option value="mtn">MTN</option>
+                </select>
+            </div>
+            <div class="option1">
+                <label for="" class="form-label m-0">Select Amount:</label>
+                <select name="" id="cardprice1" title="amount" class="form-select">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </select>
+            </div>
+            <button class="btn btn-outline-secondary" onclick="generate()">Get Recharge Card</button>
+        </div>
+        <p class="text-center">The pin is : <span id="pin"></span></p>
+        <hr>
+        <h2 class="text-center py-2">Purchase Card</h2>
+        <form action="">
+            <div class="option1 gap-4 py-3 flex-wrap">
+                <div class="option1">
+                    <label for="" class="form-label m-0">Select SIM:</label>
+                    <select name="" id="simcard2" title="sim" class="form-select">
+                        <option value="glo">GLO</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="9mobile">9MOBILE</option>
+                        <option value="mtn">MTN</option>
+                    </select>
+                </div>
+                <div class="option1">
+                    <label for="" class="form-label m-0">Select Amount:</label>
+                    <select name="" id="cardprice2" title="amount" class="form-select">
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </div>
+                <div class="option1">
+                    <label for="" class="form-label">Enter PIN</label>
+                    <input type="text" placeholder="PIN" class="form-control" id="thepin" maxlength="22" required>
+                </div>
+                <button class="btn btn-outline-secondary" onclick="purchase()" type="submit">Purchase Card</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    var pin = document.getElementById("pin")
+    let simcard1 = document.getElementById("simcard1")
+    let pricecard1 = document.getElementById("cardprice1")
+
+    let thepin= document.getElementById("thepin")
+    let simcard2 = document.getElementById("simcard2")
+    let cardprice2 = document.getElementById("cardprice2")
+
+    let card = []
+    let incard = {}
+    function generate() {
+        let rand
+        let rand2
+        //Check if its MTN
+        if (simcard1.value == "mtn" || simcard1.value == "MTN")
+        {
+            // Generate Random Number and Check if it is 12 digits
+            let randnum = setTimeout(() => {
+                rand = Math.floor(Math.random() * 10000000000000000)
+                rand2 = rand.toString().length
+                if (rand2 == 16) {
+                    pin.innerHTML = rand
+                }
+            }, 1)
+            incard = {sim:simcard1.value, price:pricecard1.value}
+        } else
+        {
+            alert("Make Use Of MTN")
+        }
+    }
+    function purchase() {
+        let valuepin = thepin.value
+        console.log(valuepin)
+        if (simcard2.value == incard.sim && cardprice2.value == incard.price && valuepin.startsWith("*555*") && valuepin.includes(pin.innerHTML) && valuepin.endsWith("#")) {
+            alert(`You just bought a ${simcard2.value.toUpperCase()} Recharge Card of ${cardprice2.value}`)
+        }
+        else {
+            alert("Check Your Inputs")
+        }
+    }
+</script>
+</html>

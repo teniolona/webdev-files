@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../calculator/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(../afrimerican-man.jpg);
+        }
+        * {
+            font-family: "Montserrat";
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-50 card bg-light mx-auto">
+        <p class="fs-2 text-center py-3">Sign Up Page</p>
+        <form action="" class="row mx-auto w-100 justify-content-center">
+            <label for="username" class="col-form-label text-center">Username</label>
+            <input type="text" class="form-control placeholder-wave w-75" placeholder="Username" id="username" required><br>
+            <label for="email" class="col-form-label text-center">Email</label>
+            <input type="email" class="form-control placeholder-wave w-75" placeholder="Email" id="email" required><br>
+            <div class="row my-3" style="width:80%">
+                <div class="col">
+                    <label for="pass" class="col-form-label text-center">Password</label>
+                    <input type="password" class="form-control placeholder-wave" placeholder="Password" id="password" required><br>
+                </div>
+                <div class="col">
+                    <label for="confirmpass" class="col-form-label text-center">Confirm Password</label>
+                    <input type="password" class="form-control placeholder-wave" placeholder="Confirm Password" id="confirmpassword" required><br>
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-outline-success mx-auto w-75" onclick="submit()">Submit</button>
+        <p class="text-center fs-5 my-3">Want To Login? Login <a href="./loginpage.html" class="link-success">Here</a></p>
+    </div>
+</body>
+<script>
+    let password = document.getElementById("password")
+    let confirmp = document.getElementById("confirmpassword")
+    let email = document.getElementById("email")
+    let username = document.getElementById("username")
+    let user = []
+
+    let users = []
+    users = localStorage.getItem("info")
+    users = JSON.parse(users)
+    
+    //To Check if there is any user there
+    if(users !== null) {
+        user = users
+        user = JSON.stringify(user)
+    } else {
+        user = JSON.stringify(user)
+        localStorage.setItem("info", user)
+    }
+
+    user = localStorage.getItem("info")
+    user = JSON.parse(user)
+    console.log(user)
+
+    // Get email list to check if user exists
+    let emailist = user.map((item, index) => {
+        return item.email
+    })
+    console.log(emailist)
+    function submit() {
+        // To save into the localStorage and get it back
+        /*user = JSON.stringify(user)
+        localStorage.setItem("info", user)
+        user = localStorage.getItem("info")
+        user = JSON.parse(user)*/
+
+        //alert(`${confirmp.value} & ${password.value}`)
+        // To check if the email is already in the localStorage before
+        if (email.value in emailist) {
+            alert("This User Already Exists")
+        } else {
+            if (password.value === confirmp.value) {
+                let newuser = {username:username.value, password:password.value, email:email.value}
+                user.push(newuser)
+                user = JSON.stringify(user)
+                // sessionStorage.setItem("info", user)
+                localStorage.setItem("info", user)
+                //user = sessionStorage.getItem("info")
+                user = localStorage.getItem("info")
+                user = JSON.parse(user)
+                window.location.href = "./welcome.html"
+            }
+            else {
+                alert("The passwords are not equal")
+            }
+        }
+        
+        console.log(user)
+    }
+    /*let user = {username:"teniola", password:"teniola", email:"teniola.me@gmail.com"}
+    let username = document.getElementById("username")
+    let password = document.getElementById("password")
+    let email = document.getElementById("email")
+
+    function submit() {
+        let usertrial = {username:username.value, password:password.value, email:email.value}
+        
+        if (usertrial == user) {
+            window.location.href = "welcome.html"
+        }
+        else {
+            alert("Incorrect Details")
+        }
+    }*/
+</script>
+</html>
