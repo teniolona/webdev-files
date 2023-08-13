@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Users/USER/Desktop/Tutorials/css/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <style>
+        body {
+            width: 100%;
+        }
+        .main {
+            margin: 0 auto;
+            width: 300px;
+        }
+        /*.first button {
+            padding: 7px;
+        }
+        .second button {
+            padding: 7px;
+        }*/
+    </style>
+</head>
+<body>
+    <!-- <div class="main">
+        <div class="first">
+            <button onclick="add()">Addition</button>
+            <button onclick="incre1()">Increment</button>
+            <button onclick="decre1()">Decrement</button>
+        </div>
+        <br>
+        <div class="second">
+            <button onclick="mult()">Multiplication</button>
+            <button onclick="incre2()">Increment</button>
+            <button onclick="decre2()">Decrement</button>
+        </div>
+        <h1 id="girl">Penelope</h1>
+        <button onclick="vero()">Change Name</button>
+        <button onclick="color()">Change Color</button>
+    </div> -->
+   <!--  <div class="main">
+        <input type="text" name="" id="input1">
+        <button onclick="addNum3()">Click Me</button>
+        <div id="div1"></div>
+        <input type="text" name="" id="input2">
+    </div>
+    <div class="container-md card shadow-lg p-4" style="height: 400px;">
+        <h6 class="text-center display-6 text-muted">ALATA Calculator</h6>
+        <div class="d-flex justify-content-around py-4">
+            <input type="text" id="input3" class="form-control border-dark-subtle" style="width:40%;">
+            <input type="text" id="input4" class="form-control border-dark-subtle" style="width:40%;">
+        </div>
+        <div class="d-flex justify-content-evenly">
+            <button class="btn btn-dark mx-2" onclick="add()">+</button>
+            <button class="btn btn-dark mx-2" onclick="subtract()">-</button>
+            <button class="btn btn-dark mx-2" onclick="divide()">/</button>
+            <button class="btn btn-dark mx-2" onclick="multiply()">*</button>
+        </div>
+        <p class="display-6 my-5 text-center">Result: <span id="result"></span></p>
+    </div> -->
+
+    <!-- <div class="container-md card py-4">
+        <button class="btn btn-success" onclick="execute()">Click Me</button>
+        <p id="operation1"></p>
+    </div> -->
+    <head>
+        <h1 class="display-3 fw-bold text-center my-2">Quiz Application</h1>
+    </head>
+    <div class="container-md card my-3 bg-light px-3">
+        <p class="text fs-5 my-3" id="questions"></p>
+        <form action="" id="theoptions"></form>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-info" onclick="prevquest()" id="prev-b">Previous</button>
+            <button class="btn btn-primary" onclick="nextquest()" id="next-b">Next</button>
+        </div><br>
+    </div>
+    <div class="container-md">
+        <p class="mytext"></p>
+        <div class="d-flex justify-content-between ">
+        <button class="btn btn-outline-info" onclick="prev()">Previous</button>
+        <button class="btn btn-outline-info" onclick="next()">Next</button>
+    </div>
+    </div>
+</body>
+
+<script>
+    let text = [{info:"JavaScript is a Scripting Language"}, {info:"CSS is used to style the html page"}]
+    let looping = document.querySelector(".mytext")
+    let texts = 0
+    looping.innerHTML = `${text[texts].info}`
+    function prev() {
+        texts--
+        looping.innerHTML = `${text[texts].info}`
+    }
+    function next() {
+        texts++
+        looping.innerHTML = `${text[texts].info}`
+    }
+    
+    // Quiz Application
+    let questions = document.getElementById("questions")
+    let options = document.getElementById("theoptions")
+    let nextb = document.getElementById("next-b")
+    let prevb = document.getElementById("prev-b")
+    let cbt = [{
+            question: "What Is Your Favourite Food?",
+            option: ["Rice", "Beans", "Yam", "Spaghetti"]
+        },
+        {
+            question: "What Is Your Favourite Color?",
+            option: ["Blue", "Red", "White", "Black"]
+        },
+        {
+            question: "What Is Your Favourite Subject?",
+            option: ["Chemistry", "GST", "English", "Maths"]
+        }]
+    let varas = 0
+    //questions.innerHTML = `${cbt[varas].} ${cbt[varas].question}`
+    let question = cbt.map((item, index) => {
+        return index + 1
+    })
+    questions.innerHTML = `${question[varas]}. ${cbt[varas].question}`
+    for (let i = 0; i < cbt[varas].option.length; i++) {
+        options.innerHTML += `<div class="d-flex align-items-center"><input type="radio" name="options" class=" form-check-inline" value="${cbt[varas].option[i]}">${cbt[varas].option[i]}</div><br>`
+    }
+    function nextquest() {
+        options.innerHTML = ""
+        varas++
+        question = cbt.map((item, index) => {
+            return index + 1
+        })
+        questions.innerHTML = `${question[varas]}. ${cbt[varas].question}`
+        for (let i = 0; i < cbt[varas].option.length; i++) {
+            options.innerHTML += `<div class="d-flex align-items-center"><input type="radio" name="options" class=" form-check-inline" value="${cbt[varas].option[i]}">${cbt[varas].option[i]}</div><br>`
+        }
+        if (question[varas] == 1) {
+            prevb.disabled = true
+        } else {
+            prevb.disabled = false
+        }
+        if (question[varas] == 3) {
+            nextb.disabled = true
+        } else {
+            nextb.disabled = false
+        }
+    }
+    if (question[varas] == 1) {
+        prevb.disabled = true
+    } else {
+        prevb.disabled = false
+    }
+    if (question[varas] == 3) {
+        nextb.disabled = true
+    } else {
+        nextb.disabled = false
+    }
+    function prevquest()
+    {
+        options.innerHTML = ""
+        varas--
+        question = cbt.map((item, index) => {
+            return index + 1
+        })
+        questions.innerHTML = `${question[varas]}. ${cbt[varas].question}`
+        for (let i = 0; i < cbt[varas].option.length; i++) {
+            options.innerHTML += `<div class="d-flex align-items-center"><input type="radio" name="options" class=" form-check-inline" value="${cbt[varas].option[i]}">${cbt[varas].option[i]}</div><br>`
+        }
+        if (question[varas] == 1) {
+            prevb.disabled = true
+        } else {
+            prevb.disabled = false
+        }
+        if (question[varas] == 3) {
+            nextb.disabled = true
+        } else {
+            nextb.disabled = false
+        }
+    }
+    
+    /*console.log("Number 1 is 10")
+    console.log("Number 2 is 20")
+    let num1 = 10
+    let num2 = 20
+    let addition = num1 + num2
+    let multiply = num1 * num2
+    function add() {
+        console.log("Addition is " + addition)
+    }
+    function incre1() {
+        console.log(++addition)
+    }
+    function decre1() {
+        console.log(--addition)
+    }
+
+    function mult() {
+        console.log("Multiplication is " + multiply)
+    }
+    function incre2() {
+        console.log(++multiply)
+    }
+    function decre2() {
+        console.log(--multiply)
+    }
+    let text = document.getElementById("girl")
+    function vero() {
+        text.innerHTML = "Veronica"
+    }
+    function color() {
+        text.style.color = "red"
+    }*/
+
+    
+    let operation1 = document.getElementById("operation1")
+    function execute() {
+        let num1 = prompt("Enter a Number")
+        for(let i = 1; i < 12; i++) {
+            operation1.innerHTML += `${i * Number(num1)} <br>`
+        }
+    }
+
+    let input1 = document.getElementById("input1")
+    let div1 = document.getElementById("div1")
+    let input2 = document.getElementById("input2")
+    
+    function addNum3() {
+        let val1 = Number(input1.value)
+        div1.innerHTML = val1 * 2
+        input2.value = val1 * 3
+    }
+
+    //Correction to Assignment
+    /*let input3 = document.getElementById("input3")
+    let input4 = document.getElementById("input4")
+    let result = document.getElementById("result")
+    
+    function add() {
+        let num = parseInt(input3.value) + parseInt(input4.value)
+        result.innerHTML = num
+    }
+    function subtract() {
+        let num = Number(input3.value) - Number(input4.value)
+        result.innerHTML = num
+    }
+    function divide() {
+        let num = Number(input3.value) / Number(input4.value)
+        result.innerHTML = num
+    }
+    function multiply() {
+        let num = Number(input3.value) * Number(input4.value)
+        result.innerHTML = num
+    }*/
+</script>
+</html>

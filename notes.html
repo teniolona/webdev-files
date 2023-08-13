@@ -1,0 +1,285 @@
+<html>
+    <script>
+
+        //Introduction to JS, Naming Convention, variables and Comments was the first lesson
+        // Note that Console.log() is mostly used for testing
+        // Concatenation only works with +, not * or any other operator
+        // Next Lesson is Operators
+        // Assignment Operators: You can assign a text or a data to a variable
+        // Operators include +, -, /, *, =
+        // let num1 = 1;
+        // let num2 = 2;
+        // num1 += num2; 3
+        // num1 *= num2; 6
+        // The above are assignment operators
+        
+        // let num1 = 1;
+        // let num2 = 50;
+        // * - mult, + - add, - - sub, / - div, ** - power, // - square root, % - modulo
+        // The above are arithmetic operators
+        // && - Logical AND
+        // || - Logical OR
+        // ! - Logical NOT
+        // Using logical and comparison operators, together we have access to more operators
+        // console.log(5 == 5); True
+        // console.log(5 == "5"); true - because the values are compared, not the data types
+        // The above are logical operators, used to perform boolean operations, using values
+        // Whenever you use two operators, the data types are not compared but the values are compared
+        // Whenever you use three operators, the data types and the values are both used.
+        console.log(5 !== "5") // True
+        console.log(5 >= 3) // True
+        console.log(5 <! 3) // False
+        console.log(6 == "6" || 6 < 1) // True
+
+        //Ternary Operators
+        // The are operators carry three operands
+        //They are mostly used to check if a condition is true or not by performing an event
+        /* 6 == "6" ? alert("The condition is true") : alert(false)
+        let test = prompt("Enter your number") //A value from prompt is received as a string by default
+        test = Number(test)
+        6 === test ? alert(true):alert(false) */
+        // Alert is used to output a value
+        // Prompt is used to input a value
+
+        // Assignment - Write Up on Data Types on Javascript, Bitwise Operators and then Write a program to check if a number is even or not
+        
+        // Method 1
+        let numa = 0
+        for(let i=0; i >= numa; i++) {
+            if (i % 2 == 0) {
+                console.log(i)
+                if (i == 100) {
+                    break
+                }
+            }
+        }
+        // Method 2
+        let num1 = prompt("Enter a number: ")
+        num1 %= 2
+        num1 == 0 ? alert("It is an even number") : alert("It is not an even number")
+        // Next Lesson
+        //<button onclick="">Click</button> - This is inline javascript
+        // JS can be written as inline, internal and external
+        // Functions are keywords containing block of codes, which are used to perform events and operations
+        // A Function uses the scope concept, whereby every variable declared in it, is only accessible by it alone, making it scope-centered
+        // To Increment the value of a variable, you use ++
+        // To decrement the value of a variable, you use --
+        // The document object consists of the whole html document and it consists of properties and methods
+        // Using a method of document called getElementById(), we can access the id of an element and manipulate the values of the element
+
+
+        // Next Lesson
+        // There are ways of defining functions such as an anonymous function, which doesn't have a name, but has an identifier(variable), which is assigned to the function.
+        // For example, let addNum2 = function () {}
+        // Also, there are arrow functions i.e let addNum3 = () => {}  - This is the ECMA Script 6 way of writing javascript
+        // In the normal function, the return statement can be used.
+        // The return statement is used to return a specific value after all the operations have been performed in the function, reducing it to a value.
+        // For the arrow functions, you use implicit return statement
+
+        // In a Block Of Code, only one return statement can be declared. Due to this, all the operations have to be done above the return statement.
+        // A block of code is a body of code that uses curly braces.
+        // Parametized functions makes uses of parameters. These parameters are declared inside the bracket of the function.
+        // These parameters are used to perform the operations inside the function.
+        // One thing about parametized functions is that you have to supply a value as arguments into the paramerters, which would be the value of the parameters.
+        /* For example, function addNum2 (a, b) {
+            a += b
+            return a
+        } 
+        let num1 = addNum2(5, 6) ------- 5 and 6 are the arguments*/
+        // Using document.getElementById('id_name').innerHTML = identifier, we can be able to represent the value or text
+        // Event Listeners simply listen to events, performing oeprations when a user perform an events
+        // String Concatenation in JavaScript uses ${variable} and `` to write the string
+        // For example, div.innerHTML = `The color of this div is ${newColor}`
+        // Note that the difference between the console.log() method and the return statement is that the return statement gives on value and also makes the function return that value outside the function, assigning it to a variable.
+        // Then the console.log() will print out the result of an operations when used in a function but, it must be executed or invoked.
+
+        // Next Lesson
+        // String Methods: A string is a sequence of characters that is kept in single quotes or double quotes
+        // The string methods are the operations that can be performed on the string. It is similar to the property of the string.
+        // For example, counting the length of a string.
+        // let str1 = "TestRam"
+        // console.log(str1.length) - The result will be 7
+        // Another is slice which gets a chracter or a group of characters out of the string
+        // This is similar to extracting a sub string from the string given. It makes use of 2 parameters
+        // which are the start position and the end position of the sub-string in the string, which starts from 0 and ends at the length of the characters of the string
+        // let str2 = "Welcome to eternal lake"
+        // console.log(str2.slice(0, 9)) - The result will be 'Welcome t'
+        // Note that the white space between is also a character
+        //let plc = "wELCSAOCM ASCIAMSC"
+        // console.log(plc.slice(4, plc.length))
+        // Using substring() method, it is similar to the slice method but values less than 0 is seen as 0
+        // Also, if one value is supplied, it would take that value to be the first parameter and extract the characters in the string
+        // Using substr(), the first parameter is the start point from the index 0, just like splice but, the second parameter is the length of the characters to be extracted starting from 1
+        // Using replace(), it is used to replace a group of characters in a string with another character, taking two values, the search value and replace value
+        // Using toUpperCase(), it converts a string to upper case. It takes no parameters.
+        // let name = "Olonade Teniola"
+        // let test = name.toUpperCase()
+        // console.log(test.replace("TENIOLA", "Tofunmi"))
+        // Using toLowerCase(), it does the opposite the 
+        // Using split(), an argument is supplied into the split statement which must be inside the string that is inside the string variable supplied.
+        // let names = "place,halle,yehas,asplc"
+        // console.log(names) - The result will be ['place', 'halle','yehas', 'asplc']
+        // Using charAt(), the character at a certain position in the string is returned
+        // About Data types, undefined and null means empty
+        // The difference is null is like an empty can. Undefined is when there is no can at all. These two data types are totally differ from strings, arrays and all.
+        // An array data type takes a group of values together in the same variable. For example,
+        // let names = ["teniola", "hermoine", "jake", "rockabye", "remanaira", "ubongabasi"]
+        // console.log(names[2]) - The result will be "jake"
+        // The index of the array starts from Zero
+        // Objects contain identifiers that can contain different data types in the same variable. It is used to represent a real life object with different properties.
+        // let evans = {name:"Tanimola", age:28, school:"bOWEN"}
+        
+        // Next Lesson
+        // The methods are operations that the data type uses to perform operations
+        // Just like the Number() method is used to convert a string to a number, let's talk about number methods
+        // There are actually two types of numbers which are integers and float numbers(decimal)
+        // Now the parseFloat() method converts a string to a floating number
+        // Let's go through the types of number methods. The first is toString(). It gives the string representation of a number, converting it to a string
+        // Anytime you assign a value to a variable no matter the data type, it becomes a new instance of a particular class. These classes are the Numbers, String, etc.
+        // Note that another way of creating an array is by defining the array class, Array()
+        // Similar to Number(), String(), Object(), Boolean(), etc.
+        // Another method is toExponential(), it converts a number to its exponent or standard form and the parameter supplied the numbers of digits you want after the decimal point
+        // Another one is toPrecision() method which returns the exponent of a whole number with the number of values needed altogether specified as a parameter
+        // It returns a string with a precise or specified length which is supplied as a parameter by the toPrecision() method.
+        // Also, the typeof() method is used to check the dtata type of the value of a variable which has been defined.
+        // All the number methods convert their values to a string but, the valueOf() method supplies the value of a number as a number
+        // The this keyword is used to make reference to a property, a value, a method inside the scope of a class or object or function
+        // Assignment is to write up on Array Methods, Array Iteration and Loops in JavaScript
+        /*let number1 = 444444444
+        let number2 = number1.toExponential(2)
+        console.log(number2)
+        console.log(typeof(number2))*/
+
+        //Next Lesson
+        // The loops iterate and repeat their operations until a condition is specified to stop it from running
+        // For loops can be in such format:
+        /*let arr1 = [1,2,3,4,5,6,7,8,9,0]
+        for(i=0;i < arr1.length; i++) {
+            console.log(i)
+        }
+        The result will be 0 to 9
+        let obj1 = {name:"Saheed", age:44, isProgrammer:true}
+        for(i in obj1) {
+            console.log(i, obj1[i])
+        }
+        The result will be:
+        name Saheed
+        age 44
+        isProgrammer true
+
+        These are the only methods the for loop can be used.
+        The For Loop is the iteration method that is mostly used.
+        Another Loop is While Loop
+        You specify a value outside and then make use of it. The While Loop accepts only one condition as a parameter.
+        The iteration condition can be specified inside the loop after the arguments have been given.
+
+        Next Lesson
+        let wholeobject = [
+            {name1:"Ade", age:23},
+            {name1:"Edu", age:24}
+        ]
+        wholeobject.push({name1:"Redmade", age:25})
+        console.log(wholeobject)
+        wholeobject.forEach((item, placein) => {
+            console.log(item.age * 2)
+        })
+        let sum1 = wholeobject.reduce((total, item) => {
+            return item.age + total
+        }, 0)
+        console.log(sum1)
+
+
+        Next Lesson - new week
+        We'll be talking about localStorage
+        localStorage is the part of a web browser that can be used to store data but it stores this data as strings. That is, all its values are stored as strings.
+        JSON.stringify is used to convert a data type to JSON(or a string).
+        setItem is used to set data to localStorage. It is used to set the name of a value in the localStorage
+        let arr1 = [{name:"Teniola", age:24}, {name:"Tofunmi", age:26}]
+        localStorage.setItem('testingArray', arr1)
+        getItem is used to get a value from the localStorage, but it would be gottten as a string.
+        To convert JSON strings back to its original data type, you use JSON.parse()
+        let test = localStorage.getItem("testingArray")
+        test = JSON.parse(test)
+        The value of test is [{name:"Teniola", age:24}, {name:"Tofunmi", age:26}] in the console, which is an array of objects.
+        JSON is JavaScript object Notation is used to transfer data objects from the frontend side to the backend side.
+        So this data is written in objects. It is used to convert data to string items which can be used in the localStorage
+        To remove single data from the localStorage, you use the removeItem() function
+        localStorage.removeItem("name")
+        To empty the localStorage, you use the clear method
+        localStorage.clear()
+
+        Next Lesson
+        A class is a keyword which is used as a template for an object
+        A constructor is called immediately the class is instantiated, and it can contain parameters called properties which the objects can have.
+        Inside the class, you're able to create methods, functions which can be used to perform operations on an object.
+        Objects are instances of a class.
+        Constructors are just used to perform the operations inside the functions and also when an instance of that class is called.
+        There is also a concept in OOP called Inheritance.
+        Inheritance allows you to create a clone of a class and also make the new class to able to create its own classes also, just like a son inheriting things from his mother.
+        Every method inside a class must use the return statement. It is compulsory.
+        When you make a new instance of a class, when you console.log the instance, it is what is in the constructor that is being printed out.
+
+        Next Lesson
+        Dates in Javascript is the next thing to be talked about.
+        When using dates,  you create new instances of the date class.
+        const date = new Date()
+        console.log(date) - The result will be the time, date and time-zone of the date on your system.
+        console.log(date.getDate()) - The date is 31, presently
+        console.log(date.getDay()) - The day is the index of the day in the week, which is 1, as at Monday
+        console.log(date.getFullYear()) - The result will be 2023, as at this year.
+        console.log(date.getMinutes) - It will give you the exact minute at that time, and as at now, the minute is 2
+        console.log(date.getHours()) - It will get the hours at the present date time, which is 9
+        console.log(date.getSeconds()) - It will supply the number of seconds of the time, at that time.
+        console.log(date.getMonth()) - The result to be given is the current month, using the local time.
+        console.log(date.toUTCString()) - It gives the Universal Standard Time for your zone, which would give the date, the time and the time zone, which for mine is GMT+1
+        Assignment is to read up on setInterval, setTimeout, clearTimeout and clearInterval. Also, research on how to set an audio using javascript.
+        Note that...
+
+        Now we talk about setInterval and setTimeout.
+        Note that whenever you create a function, you trigger the function to run whenever you add bracket to the front.
+        Now for the setInterval, to use the function, you remove the bracket, so that after a certain time given, the function executes, over and over again.
+        It allows your function to run at a given interval. It takes 2 argunments, a callback function(which you want to run at the said interval), and the interval you want the function
+        to run with(in miliseconds)
+        For setTimeout, it allows you to run a function after a certain period of time has elapsed. It takes 2 arguments, a callback function(which you want to run at the said interval) and the time
+        you want to elapse before the function runs.
+        They do not use parameters or the return statement.
+
+        Next Lesson
+        There are access modifiers in javascript that help to define the level of access an object or property has in a program.
+        It can be public, private, protected, etc. Note that in JS, there are no protected access modifiers.
+        These modifiers are used in a class. A Private access modifier in a class can be written as '#product', as a variable or function
+        The Hashtag in front of the variable name helps the console to recognize that it is a private property of the class.
+        A Getter is a keyword used to get a property with the private access modifier, from the class.
+        A Setter is a keyword used to set or declare the property in the getter as one of the properties of the class.
+
+        Next Lesson
+        We'll be talking about Math.random() and Math.floor()
+        Math.random() is used to generate random numbers in JS
+        let num1 = Math.random() - The result of num1 will be any random number that has a lot of decimal numbers between the value 0 and 1 except it is directly multiplied with another number.
+        In this case where it is mutiplied, it must be diriectly multiplied with Math.random(). The value which Math.random() is multiplied with will then be the max number
+        Math.floor(), when used with Math.random() is used to get numbers that are less than or equal to the numeric argument. In this case, you don't get decimal numbers when used with Math.random().
+        let num1 = Math.floor(Math.random() * 10)
+        Assignment: Make a Recharge Card System for MTN alone. Let it have the load recharge card part below it. Use IF-ELSE so if any information is not correct, it will give me a prompt of invalid. Also, the input of the recharge card must be able to collect *555* PIN # in the load recharge card part.
+        
+        Next Lesson
+        To move from one page to another using JS, you use window.location.href = "page.html"
+        Assignment - Using localStorage, create a four inputs, one button, sign up login page.
+
+        Next Lesson
+        Assignment: Create a Quiz Application
+
+        Next Lesson
+        We're talking about git today.
+        To initialize a git repo, you use git init, which makes git installed into that file.
+        git add . - This is used to add all the files inside a directory or folder to the git repo.
+        git commit -m "Message" - This is used to make a comment to changes made to that directory, just as -m means message.
+        git remote add origin site - To be exchanged with site is the URL of the git repo that was created online
+        Argument is the original value that is passed into a function when it is being called or invoked.
+        Parameter is the variable name that is passed into a function or initialized, which is used to represent the original value at initialization
+        Authentication is when you give a user the credentials to access some of its pages.
+        Authorization is when you give a user some restrictions from accessing some rights or pages without proper access.
+        Assignment is to do the dashboard of the login page and sign up page. Find out how to perform authorization of a user. That is, you must not be able to access the dashboard without logging in.
+        Also, upload the project to GithUb
+        */
+    </script>
+</html>
