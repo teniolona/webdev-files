@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="../calculator/bootstrap-5.2.2-dist/css/bootstrap.min.css"><!-- Bootstrap for the CSS -->
+    <link rel="stylesheet" href="../icofont/icofont.min.css"><!-- Icofont, for the icons being used -->
+    <style>
+        .justify {
+            justify-content: center;
+        }
+        body {
+            background: linear-gradient(90deg, rgb(173, 83, 242), rgb(90, 22, 227));
+        }
+    </style>
+</head>
+<body>
+    <div class="container-md card p-2">
+        <h1 class="fw-bold my-1 mx-auto text-center text-bg-dark p-2 w-50 border rounded-2">Image Carousel</h1>
+
+        <div class="container card-group w-100 mx-auto col justify text-center">
+            <button type="button" class="btn btn-outline-dark" onclick="previous()">
+                <i class="icofont-rounded-left fs-4"></i>
+            </button>
+            <img alt="" id="displayimg" class="w-75 rounded-2 border">
+            <button type="button" class="btn btn-outline-dark" onclick="next()">
+                <i class="icofont-rounded-right fs-4"></i>
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+    // A Sample of Carousel
+    let images = ["../nice-setup.jpg", "../bakground-time.jpg", "../afrimerican-man.jpg"]
+    let display = document.getElementById("displayimg")
+    
+    let valindex = 0
+    display.src = images[valindex]
+    function next() {
+        /*if (valindex < 2) {
+            valindex = valindex + 1
+            display.src = images[valindex]
+            // The reason why valindex is reaching two is that the operation being performed in the condition adds up to the value of valindex
+        }*/
+        valindex++
+        display.src = images[valindex]
+        if (valindex > 2) {
+            valindex = 0
+            display.src = images[valindex]
+        }
+        console.log(valindex)
+    }
+    function previous() {
+        valindex = valindex - 1
+        display.src = images[valindex]
+
+        if (valindex < 0) {
+            valindex = images.length - 1
+            display.src = images[valindex]
+        }
+        // The reason why valindex is reaching 0 is that the operation being performed in the condition subtracts from the value of valindex by 1
+        //if (valindex == -1) {
+        //    console.log("Hello 2")
+        //    //valindex = 2
+        //    //display.src = images[valindex]
+        //}
+    }
+</script>
+</html>

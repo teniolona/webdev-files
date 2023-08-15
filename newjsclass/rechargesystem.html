@@ -66,7 +66,7 @@
                     <label for="" class="form-label">Enter PIN</label>
                     <input type="text" placeholder="PIN" class="form-control" id="thepin" maxlength="22" required>
                 </div>
-                <button class="btn btn-outline-secondary" onclick="purchase()" type="submit">Purchase Card</button>
+                <button class="btn btn-outline-secondary" onclick="purchase(event)" type="submit">Purchase Card</button>
             </div>
         </form>
     </div>
@@ -88,8 +88,8 @@
         //Check if its MTN
         if (simcard1.value == "mtn" || simcard1.value == "MTN")
         {
-            // Generate Random Number and Check if it is 12 digits
-            let randnum = setTimeout(() => {
+            // Generate Random Number and Check if it is 16 digits
+            setTimeout(() => {
                 rand = Math.floor(Math.random() * 10000000000000000)
                 rand2 = rand.toString().length
                 if (rand2 == 16) {
@@ -102,7 +102,8 @@
             alert("Make Use Of MTN")
         }
     }
-    function purchase() {
+    function purchase(thev) {
+        thev.preventDefault()
         let valuepin = thepin.value
         console.log(valuepin)
         if (simcard2.value == incard.sim && cardprice2.value == incard.price && valuepin.startsWith("*555*") && valuepin.includes(pin.innerHTML) && valuepin.endsWith("#")) {

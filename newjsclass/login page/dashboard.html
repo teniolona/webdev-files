@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My DashBoard</title>
+    <link rel="stylesheet" href="../calculator/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../icofont/icofont.min.css">
+    <style>
+        * {
+            font-family: 'Montserrat';
+        }
+        header {
+            gap: 100px;
+        }
+        .bg-text {
+            border-radius: 12px;
+            background-color: #975bd3;
+        }
+        #item1 {
+            display: block;
+        }
+        #item2, #item3 {
+            display: none;
+        }
+        #description {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav navbar py-1 px-2 border-top border-bottom border-2 border-primary-subtle">
+        <p class="text fs-5 mb-0">DashBoard</p>
+        <button class="btn btn-outline-primary" onclick="logout()">Log Out</button>
+    </div>
+    <header class="container bg-light py-3 row mx-auto">
+        <p class="text-center display-3 fw-semibold m-0 p-3 bg-text w-auto mx-auto">DashBoard</p>
+        <div class="row gap-3 mx-auto justify-content-center">
+            <p class="text-center display-6 fw-bolder my-auto w-auto">Hey There, <span id="mainuser"></span></p>
+            <p class="text-center my-auto fs-5">It Is About Time To Check Out What You've Been Able To Do</p>
+        </div>
+    </header>
+    <main class="container my-2 border-1 border-primary-subtle border-top border-bottom rounded-3">
+        <div class="d-flex justify-content-center w-75 btn-group mx-auto">
+            <button class="btn p-2 btn-outline-primary" onclick="createpost()"><i class="icofont-ui-message"></i> POST</button>
+            <button class="btn p-2 btn-outline-primary" onclick="showpost()"><i class="icofont-ui-folder"></i> BLOGS</button>
+            <button class="btn p-2 btn-outline-primary" onclick="likedpost()"><i class="icofont-ui-rating"></i> LIKED</button>
+        </div>
+        <div class="w-75 mx-auto bg-light border-1 border-primary-subtle border-top border-end border-start rounded-3" id="item1">
+            <p class="text-center fs-5 text-dark-emphasis my-2">New Post</p>
+            <div class="d-grid gap-3 p-2">
+                <input type="text" class="form-control placeholder-wave" placeholder="Title" id="title">
+                <textarea name="texts" id="description" placeholder="Description" cols="30" rows="10" class="form-control placeholder-wave"></textarea>
+                <!-- <input type="text"   id="description"> -->
+                <div class="row-2 mx-auto">
+                    <button class="btn btn-outline-primary ">Post</button>
+                    <button class="btn btn-outline-primary">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="w-75 mx-auto py-3 bg-light border-1 border-primary-subtle border-top border-end border-start rounded-3" id="item2">
+            <p class="fs-3 fw-bold text-center" id="blogs_head">Hello World</p>
+            <p class="text-center" id="blogs_subhead">This is the first post</p>
+            <p class="text-center fw-bold time"></p>
+        </div>
+        <div class="w-75 mx-auto py-3 bg-light border-1 border-primary-subtle border-top border-end border-start rounded-3" id="item3">
+            <p class="fs-3 fw-bold text-center" id="blogs_head">Like This Post</p>
+            <p class="text-center" id="blogs_subhead">This post has been liked by Everyone</p>
+            <p class="text-center fw-bold time"></p>
+        </div>
+    </main>
+
+    </main>
+
+</body>
+<script>
+    let thetime
+    let time = document.querySelector(".time")
+    let thetimes = setTimeout(() => {
+        thetime = new Date().toLocaleString()
+        //let mytime = JSON.stringify(thetime)
+        //localStorage.setItem("thetime", mytime)
+        //mytime = JSON.parse(localStorage.getItem("thetime"))
+        //time.innerHTML = mytime
+    }, 1000)
+    time.innerHTML = thetime
+
+    let item1 = document.getElementById("item1")
+    let item2 = document.getElementById("item2")
+    let item3 = document.getElementById("item3")
+    function createpost() {
+        item1.style.display = "block"
+        item2.style.display = "none"
+        item3.style.display = "none"
+    }
+    function showpost() {
+        item1.style.display = "none"
+        item2.style.display = "block"
+        item3.style.display = "none"
+    }
+    function likedpost() {
+        item1.style.display = "none"
+        item2.style.display = "none"
+        item3.style.display = "block"
+    }
+    let mainuser = document.getElementById("mainuser")
+    let currentuser = localStorage.getItem("customer")
+    currentuser = JSON.parse(currentuser)
+    // console.log(currentuser)
+    if (currentuser == null || currentuser == []) {
+        window.location.href = "error404.html"
+    } else {
+        //window.location.href = "error404.html"
+        let auser = currentuser.username
+        mainuser.innerHTML = auser.toUpperCase()
+    }
+    function logout() {
+        localStorage.removeItem("customer")
+        alert("Logging You Out...")
+        window.location.href = "loginpage.html"
+    }
+</script>
+</html>
