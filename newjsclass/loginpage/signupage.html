@@ -16,19 +16,19 @@
     </style>
 </head>
 <body>
-    <div class="container w-50 card bg-light mx-auto">
+    <div class="container w-75 card bg-light mx-auto">
         <p class="fs-2 text-center py-3">Sign Up Page</p>
         <form action="" class="row mx-auto w-100 justify-content-center">
             <label for="username" class="col-form-label text-center">Username</label>
             <input type="text" class="form-control placeholder-wave w-75" placeholder="Username" id="username" required><br>
             <label for="email" class="col-form-label text-center">Email</label>
             <input type="email" class="form-control placeholder-wave w-75" placeholder="Email" id="email" required><br>
-            <div class="row my-3" style="width:80%">
-                <div class="col">
+            <div class="d-grid justify-content-around my-3" style="width:80%">
+                <div class="row">
                     <label for="pass" class="col-form-label text-center">Password</label>
                     <input type="password" class="form-control placeholder-wave" placeholder="Password" id="password" required><br>
                 </div>
-                <div class="col">
+                <div class="row">
                     <label for="confirmpass" class="col-form-label text-center">Confirm Password</label>
                     <input type="password" class="form-control placeholder-wave" placeholder="Confirm Password" id="confirmpassword" required><br>
                 </div>
@@ -44,23 +44,17 @@
     let email = document.getElementById("email")
     let username = document.getElementById("username")
     let user = []
-
-    let users = []
-    users = localStorage.getItem("info")
-    users = JSON.parse(users)
+    user = localStorage.getItem("info")
+    user = JSON.parse(user)
     
     //To Check if there is any user there
-    if(users !== null) {
-        user = users
-        user = JSON.stringify(user)
+    if(user !== null) {
+        //user = JSON.stringify(user)
+        console.log(user)
     } else {
         user = JSON.stringify(user)
         localStorage.setItem("info", user)
     }
-
-    user = localStorage.getItem("info")
-    user = JSON.parse(user)
-    console.log(user)
 
     // Get email list to check if user exists
     let emailist = user.map((item, index) => {
@@ -68,6 +62,11 @@
     })
     console.log(emailist)
     function submit() {
+        // Get email list to check if user exists
+        let emailist = user.map((item, index) => {
+            return item.email
+        })
+        console.log(emailist)
         // To save into the localStorage and get it back
         /*user = JSON.stringify(user)
         localStorage.setItem("info", user)
@@ -79,16 +78,19 @@
         if (email.value in emailist) {
             alert("This User Already Exists")
         } else {
-            if (password.value === confirmp.value) {
-                let newuser = {username:username.value, password:password.value, email:email.value}
-                user.push(newuser)
-                user = JSON.stringify(user)
-                // sessionStorage.setItem("info", user)
-                localStorage.setItem("info", user)
-                //user = sessionStorage.getItem("info")
-                user = localStorage.getItem("info")
-                user = JSON.parse(user)
-                window.location.href = "./welcome.html"
+            if (password.value == confirmp.value) {
+                if (username.value == "" || password.value == "" || email.value == ""){
+                    alert("Inputs cannot be empty")
+                } else {
+                    let newuser = {username:username.value, password:password.value, email:email.value}
+                    user.push(newuser)
+                    user = JSON.stringify(user)
+                    localStorage.setItem("info", user)
+                    user = localStorage.getItem("info")
+                    user = JSON.parse(user)
+                    alert("Success! You Can Now Login")
+                    window.location.href = "loginpage.html"
+                }
             }
             else {
                 alert("The passwords are not equal")
